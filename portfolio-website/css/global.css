@@ -1,0 +1,159 @@
+/* css/global.css */
+
+/* This file contains core styles used across the entire website. */
+
+/* Custom Global Styles */
+
+.gradient-text {
+  background-image: linear-gradient(to right, #9333ea, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Aurora effect - Matching website theme (purple/blue) */
+span.aurora-text {
+  background: linear-gradient(
+    135deg,
+    #c084fc 0%,
+    #9333ea 20%,
+    #7c3aed 35%,
+    #3b82f6 55%,
+    #60a5fa 70%,
+    #a78bfa 85%,
+    #c084fc 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: aurora-shift 8s ease-in-out infinite;
+}
+
+@keyframes aurora-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* NEW: Animated gradient for typing subheading text */
+#hero-skill {
+  background: linear-gradient(
+    90deg,
+    #06b6d4 0%,
+    #3b82f6 25%,
+    #8b5cf6 50%,
+    #d946ef 75%,
+    #06b6d4 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: typing-gradient 6s linear infinite;
+}
+
+@keyframes typing-gradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Reusable Glass Card Component */
+.glass-card {
+  background-color: rgba(28, 28, 36, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Global Navigation Styles */
+.main-nav a {
+  position: relative;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #9333ea, #3b82f6);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+
+.main-nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ============================================ */
+/* PREMIUM NAVIGATION BAR - GLASS MORPHISM */
+/* ============================================ */
+
+header {
+  will-change: opacity, clip-path;
+  transition: opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              clip-path 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+header nav {
+  background: rgba(16, 16, 24, 0.8) !important; /* Force semi-transparent background */
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  will-change: transform, backdrop-filter;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              backdrop-filter 0.3s ease,
+              background-color 0.3s ease;
+}
+
+/* Enhanced blur when scrolled */
+header nav.backdrop-blur-2xl {
+  backdrop-filter: blur(32px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+  background: rgba(16, 16, 24, 0.9) !important;
+}
+
+/* Accessibility - Disable animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  header,
+  header nav {
+    transition: none !important;
+    will-change: auto !important;
+  }
+}
+
+/* GPU acceleration for buttery smooth animations */
+header {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+header nav {
+  will-change: transform, backdrop-filter;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+
+/* Dynamic Island Animation Support - Optimized for GSAP */
+header nav {
+  overflow: hidden;
+  white-space: nowrap;
+  will-change: width, height, border-radius, padding;
+  /* Remove CSS transitions - GSAP handles all animations */
+}
+
+header nav .main-nav {
+  display: inline-flex;
+  transform-origin: left center;
+  will-change: transform, opacity;
+  /* No transitions - pure GSAP for smoothness */
+}
+

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqib Rahman - Portfolio</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'void': '#0A0A10', 'space': '#101018', 'nebula': '#14141C', 'surface': '#1C1C24', 'elevated': '#24242C',
+                        'text-primary': '#EAEBF0', 'text-secondary': '#B4B4C0', 'text-tertiary': '#848494',
+                        'cosmic-purple': '#9333ea', 'stellar-blue': '#3b82f6',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    backdropBlur: { 'xl': '24px', '2xl': '32px' },
+                    borderRadius: { '4xl': '2rem' },
+                }
+            }
+        }
+    </script>
+
+    <!-- NEW: Linking to our refactored CSS files -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body class="bg-void text-text-primary font-sans antialiased selection:bg-cosmic-purple/30">
+
+    <!-- Global Header -->
+    <header class="fixed top-4 left-1/2 -translate-x-1/2 z-50">
+        <nav class="glass-card flex items-center gap-6 px-4 py-2 rounded-full transition-all duration-300">
+            <a href="/" class="text-xl font-bold gradient-text">AR</a>
+            <div class="hidden md:flex items-center gap-6 text-text-secondary main-nav">
+                <a href="/" class="hover:text-text-primary transition-colors">Home</a>
+                <a href="/work.html" class="hover:text-text-primary transition-colors">Work</a>
+                <a href="/about.html" class="hover:text-text-primary transition-colors">About</a>
+                <a href="/contact.html" class="hover:text-text-primary transition-colors">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20 overflow-hidden">
+            <canvas id="shader-canvas" class="absolute top-0 left-0 w-full h-full -z-20"></canvas>
+            <div id="cursor-glow" class="absolute w-72 h-72 rounded-full pointer-events-none -z-18 opacity-0"></div>
+            <div class="stars -z-10" aria-hidden="true">
+                <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <div id="hero-content" class="relative z-10 opacity-0">
+                <h1 class="hero-heading text-5xl md:text-7xl font-bold leading-tight tracking-tighter">
+                    Hi, I'm <span class="gradient-text aurora-text">Aqib Rahman</span>
+                </h1>
+                <p class="hero-subheading text-xl md:text-2xl text-text-secondary mt-4 max-w-3xl">
+                    ECE × CSE Student Crafting 
+                    <span class="inline-block">
+                        <span id="hero-skill" class="font-bold gradient-text"></span><span id="typing-cursor" class="cursor text-text-secondary">|</span>
+                    </span>
+                </p>
+                <div class="hero-buttons flex flex-wrap justify-center gap-4 mt-8">
+                    <a id="primary-cta" href="#" class="primary-cta relative inline-flex items-center justify-center overflow-hidden bg-cosmic-purple text-white px-6 py-3 rounded-lg font-semibold transition-transform">Explore My Work
+                        <span class="cta-shine absolute inset-0 pointer-events-none"></span>
+                    </a>
+                    <a id="secondary-cta" href="#" class="secondary-cta relative inline-flex items-center gap-2 bg-surface text-text-primary px-6 py-3 rounded-lg font-semibold border border-elevated hover:border-text-secondary transition-colors">
+                        <span class="star-icon absolute left-3 -ml-1 -translate-y-1 opacity-0" aria-hidden="true"></span>
+                        Let's Connect
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Tech Strip Section =========== -->
+        <section id="tech-strip-section" class="py-20 space-y-8 overflow-hidden">
+            <!-- Row 1 -->
+            <div class="tech-row">
+                <div class="tech-row-inner flex w-max space-x-16">
+                    <div class="flex space-x-16" aria-hidden="true">
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>React</title><path d="M12.001 2.002c-5.522 0-10 4.478-10 10 0 5.523 4.478 10 10 10s10-4.477 10-10c0-5.522-4.478-10-10-10zm0 18.002c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)" fill="currentColor"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)" fill="currentColor"/><circle cx="12.001" cy="12.002" r="2.2" fill="currentColor"/></svg>React</div>
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>JavaScript</title><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.536-.63-1.536-1.155 0-.42.384-.78.933-.78.576 0 .96.396.96 1.44l2.844-.276c-.096-1.776-1.359-3.12-3.804-3.12-2.31 0-3.84 1.332-3.84 3.012 0 1.116.792 1.956 2.076 2.556.756.276 1.848.648 1.848 1.188 0 .588-.612.876-1.188.876-.852 0-1.32-.456-1.32-1.632l-2.856.288c.156 2.016 1.704 3.3 4.32 3.3 2.568 0 4.224-1.32 4.224-3.252zM10.254 13.92c.48 0 .84-.336.84-.792s-.36-.78-.84-.78-.84.324-.84.78c0 .456.36.792.84.792zm.156-5.4c.828 0 1.284.456 1.284 1.188 0 .756-.444 1.188-1.284 1.188-.84 0-1.284-.432-1.284-1.188 0-.732.444-1.188 1.284-1.188z" fill="currentColor"/></svg>JavaScript</div>
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>TypeScript</title><path d="M1.5 0h21v24H1.5zM21 1.5v21H3V1.5z" fill="currentColor"/><path d="m11.83 13.16.03-3.41h1.86l.02 3.41h1.49v1.5H11.83zM12.5 8.12A1.9 1.9 0 0 0 11 6.55c-.5-.43-1.2-.6-2.02-.45v8.52h1.5v-3.41h1.87v3.41h1.5V6.5h-1.35Z" fill="currentColor"/></svg>TypeScript</div>
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Next.js</title><path d="M12.001 2.002c-5.522 0-10 4.478-10 10 0 5.523 4.478 10 10 10s10-4.477 10-10c0-5.522-4.478-10-10-10zm0 18.002c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/><path d="M12.915 7.937h-3.83v7.35l3.83-.001v-1.63H10.63v-.938h2.285v-1.579H10.63v-.937h2.285zm1.516.002h1.72v7.348h-1.72z" fill="currentColor"/></svg>Next.js</div>
+                    </div>
+                     <div class="flex space-x-16" aria-hidden="true">
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>React</title><path d="M12.001 2.002c-5.522 0-10 4.478-10 10 0 5.523 4.478 10 10 10s10-4.477 10-10c0-5.522-4.478-10-10-10zm0 18.002c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)" fill="currentColor"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)" fill="currentColor"/><circle cx="12.001" cy="12.002" r="2.2" fill="currentColor"/></svg>React</div>
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>JavaScript</title><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.536-.63-1.536-1.155 0-.42.384-.78.933-.78.576 0 .96.396.96 1.44l2.844-.276c-.096-1.776-1.359-3.12-3.804-3.12-2.31 0-3.84 1.332-3.84 3.012 0 1.116.792 1.956 2.076 2.556.756.276 1.848.648 1.848 1.188 0 .588-.612.876-1.188.876-.852 0-1.32-.456-1.32-1.632l-2.856.288c.156 2.016 1.704 3.3 4.32 3.3 2.568 0 4.224-1.32 4.224-3.252zM10.254 13.92c.48 0 .84-.336.84-.792s-.36-.78-.84-.78-.84.324-.84.78c0 .456.36.792.84.792zm.156-5.4c.828 0 1.284.456 1.284 1.188 0 .756-.444 1.188-1.284 1.188-.84 0-1.284-.432-1.284-1.188 0-.732.444-1.188 1.284-1.188z" fill="currentColor"/></svg>JavaScript</div>
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>TypeScript</title><path d="M1.5 0h21v24H1.5zM21 1.5v21H3V1.5z" fill="currentColor"/><path d="m11.83 13.16.03-3.41h1.86l.02 3.41h1.49v1.5H11.83zM12.5 8.12A1.9 1.9 0 0 0 11 6.55c-.5-.43-1.2-.6-2.02-.45v8.52h1.5v-3.41h1.87v3.41h1.5V6.5h-1.35Z" fill="currentColor"/></svg>TypeScript</div>
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Next.js</title><path d="M12.001 2.002c-5.522 0-10 4.478-10 10 0 5.523 4.478 10 10 10s10-4.477 10-10c0-5.522-4.478-10-10-10zm0 18.002c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/><path d="M12.915 7.937h-3.83v7.35l3.83-.001v-1.63H10.63v-.938h2.285v-1.579H10.63v-.937h2.285zm1.516.002h1.72v7.348h-1.72z" fill="currentColor"/></svg>Next.js</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row 2 -->
+            <div class="tech-row reverse">
+                <div class="tech-row-inner flex w-max space-x-16">
+                    <div class="flex space-x-16" aria-hidden="true">
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>CSS3</title><path d="m1.5 0 1.9 21.5L12 24l8.6-2.5L22.5 0h-21zM18.4 7.4 12 9.5l-6.4-2.1L5.3 5h13.4l-.3 2.4zM12 21l-5.6-1.5-1-11.2h6.6v2.2H7.9l.4 4.8L12 16.4v-2.2l-2.1-.6.2-2.4h6.5l-.8 8.8L12 21z" fill="currentColor"/></svg>CSS</div>
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Tailwind CSS</title><path d="M12.001 2.002c-5.522 0-10 4.478-10 10 0 5.523 4.478 10 10 10s10-4.477 10-10c0-5.522-4.478-10-10-10zm0 18.002c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/><path d="M7.116 11.28c0 .546.22 1.037.587 1.396.368.36.852.54 1.396.54h.11c.545 0 1.037-.18 1.396-.54.36-.36.54-.85.54-1.395V9.965h1.748v1.315c0 .97-.33 1.802-.99 2.493a3.36 3.36 0 01-2.494.99 3.36 3.36 0 01-2.493-.99c-.66-.69-.99-1.523-.99-2.493V9.965h1.748zm5.727 0c0 .546.22 1.037.587 1.396.368.36.852.54 1.396.54h.11c.545 0 1.037-.18 1.396-.54.36-.36.54-.85.54-1.395V9.965h1.748v1.315c0 .97-.33 1.802-.99 2.493a3.36 3.36 0 01-2.494.99 3.36 3.36 0 01-2.493-.99c-.66-.69-.99-1.523-.99-2.493V9.965h1.748z" fill="currentColor"/></svg>Tailwind</div>
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Firebase</title><path d="m3.433 19.34.8-4.444 2.111-1.125-2.911-5.569zm13.3-7.584-3.6 3.348 1.256 7.371 4.344-1.92-2-8.799zM5.311 2.31l-1.878 10.46 5.433-2.889-3.555-7.571zm13.111 2.055-8.067 4.222 3.6-3.348L11.511 0l6.911 4.365z" fill="currentColor"/></svg>Firebase</div>
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Figma</title><path d="M12.001 2.002c-5.522 0-10 4.478-10 10 0 5.523 4.478 10 10 10s10-4.477 10-10c0-5.522-4.478-10-10-10zm0 18.002c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/><path d="M9.82 14.18c0 .905.735 1.64 1.64 1.64h1.08c.905 0 1.64-.735 1.64-1.64V9.82h-4.36zm0-5.44h1.64v2.72H9.82zm3.36 0h1.64v1.64h-1.64zm0-2.72c0-.905-.735-1.64-1.64-1.64h-1.08c-.905 0-1.64.735-1.64 1.64v1.08h4.36z" fill="currentColor"/></svg>Figma</div>
+                    </div>
+                    <div class="flex space-x-16" aria-hidden="true">
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>CSS3</title><path d="m1.5 0 1.9 21.5L12 24l8.6-2.5L22.5 0h-21zM18.4 7.4 12 9.5l-6.4-2.1L5.3 5h13.4l-.3 2.4zM12 21l-5.6-1.5-1-11.2h6.6v2.2H7.9l.4 4.8L12 16.4v-2.2l-2.1-.6.2-2.4h6.5l-.8 8.8L12 21z" fill="currentColor"/></svg>CSS</div>
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Tailwind CSS</title><path d="M12.001 2.002c-5.522 0-10 4.478-10 10 0 5.523 4.478 10 10 10s10-4.477 10-10c0-5.522-4.478-10-10-10zm0 18.002c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/><path d="M7.116 11.28c0 .546.22 1.037.587 1.396.368.36.852.54 1.396.54h.11c.545 0 1.037-.18 1.396-.54.36-.36.54-.85.54-1.395V9.965h1.748v1.315c0 .97-.33 1.802-.99 2.493a3.36 3.36 0 01-2.494.99 3.36 3.36 0 01-2.493-.99c-.66-.69-.99-1.523-.99-2.493V9.965h1.748zm5.727 0c0 .546.22 1.037.587 1.396.368.36.852.54 1.396.54h.11c.545 0 1.037-.18 1.396-.54.36-.36.54-.85.54-1.395V9.965h1.748v1.315c0 .97-.33 1.802-.99 2.493a3.36 3.36 0 01-2.494.99 3.36 3.36 0 01-2.493-.99c-.66-.69-.99-1.523-.99-2.493V9.965h1.748z" fill="currentColor"/></svg>Tailwind</div>
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Firebase</title><path d="m3.433 19.34.8-4.444 2.111-1.125-2.911-5.569zm13.3-7.584-3.6 3.348 1.256 7.371 4.344-1.92-2-8.799zM5.311 2.31l-1.878 10.46 5.433-2.889-3.555-7.571zm13.111 2.055-8.067 4.222 3.6-3.348L11.511 0l6.911 4.365z" fill="currentColor"/></svg>Firebase</div>
+                        <div class="tech-item flex items-center gap-4 text-3xl font-semibold"><svg class="w-8 h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Figma</title><path d="M12.001 2.002c-5.522 0-10 4.478-10 10 0 5.523 4.478 10 10 10s10-4.477 10-10c0-5.522-4.478-10-10-10zm0 18.002c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/><path d="M9.82 14.18c0 .905.735 1.64 1.64 1.64h1.08c.905 0 1.64-.735 1.64-1.64V9.82h-4.36zm0-5.44h1.64v2.72H9.82zm3.36 0h1.64v1.64h-1.64zm0-2.72c0-.905-.735-1.64-1.64-1.64h-1.08c-.905 0-1.64.735-1.64 1.64v1.08h4.36z" fill="currentColor"/></svg>Figma</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Featured Work Section =========== -->
+        <section class="py-20 px-4">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold">Featured Work</h2>
+                <p class="text-text-secondary mt-4">A showcase of recent projects combining technology, industry, and creativity.</p>
+            </div>
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col group">
+                    <div class="bg-elevated h-48 rounded-lg mb-4 overflow-hidden"></div>
+                    <h3 class="text-xl font-semibold">Smart Home IoT System</h3>
+                    <p class="text-text-secondary my-2 flex-grow">A system to control home appliances and monitor energy consumption.</p>
+                    <div class="flex flex-wrap gap-2 my-4">
+                        <span class="bg-cosmic-purple/10 text-cosmic-purple text-sm px-2 py-1 rounded-md">IoT</span>
+                        <span class="bg-cosmic-purple/10 text-cosmic-purple text-sm px-2 py-1 rounded-md">Embedded C</span>
+                    </div>
+                    <a href="#" class="mt-auto bg-surface text-text-primary px-4 py-2 self-start rounded-lg font-semibold border border-elevated hover:border-text-secondary transition-colors inline-flex items-center">View Case Study <i data-lucide="arrow-right" class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col group">
+                     <div class="bg-elevated h-48 rounded-lg mb-4 overflow-hidden"></div>
+                    <h3 class="text-xl font-semibold">E-commerce Analytics Platform</h3>
+                    <p class="text-text-secondary my-2 flex-grow">An AI-powered dashboard for analyzing sales data and predicting trends.</p>
+                    <div class="flex flex-wrap gap-2 my-4">
+                        <span class="bg-cosmic-purple/10 text-cosmic-purple text-sm px-2 py-1 rounded-md">AI/ML</span>
+                        <span class="bg-cosmic-purple/10 text-cosmic-purple text-sm px-2 py-1 rounded-md">React</span>
+                        <span class="bg-cosmic-purple/10 text-cosmic-purple text-sm px-2 py-1 rounded-md">Node.js</span>
+                    </div>
+                    <a href="#" class="mt-auto bg-surface text-text-primary px-4 py-2 self-start rounded-lg font-semibold border border-elevated hover:border-text-secondary transition-colors inline-flex items-center">View Case Study <i data-lucide="arrow-right" class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col group">
+                     <div class="bg-elevated h-48 rounded-lg mb-4 overflow-hidden"></div>
+                    <h3 class="text-xl font-semibold">Brand Motion Graphics</h3>
+                    <p class="text-text-secondary my-2 flex-grow">Engaging video edits and motion graphics for various brand campaigns.</p>
+                    <div class="flex flex-wrap gap-2 my-4">
+                        <span class="bg-cosmic-purple/10 text-cosmic-purple text-sm px-2 py-1 rounded-md">Video Editing</span>
+                        <span class="bg-cosmic-purple/10 text-cosmic-purple text-sm px-2 py-1 rounded-md">After Effects</span>
+                    </div>
+                    <a href="#" class="mt-auto bg-surface text-text-primary px-4 py-2 self-start rounded-lg font-semibold border border-elevated hover:border-text-secondary transition-colors transition-colors inline-flex items-center">View Case Study <i data-lucide="arrow-right" class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="bg-surface text-text-primary px-6 py-3 rounded-lg font-semibold border border-elevated hover:border-text-secondary transition-colors">View All Work</a>
+            </div>
+        </section>
+
+        <!-- =========== Services ("What I Do") Section =========== -->
+        <section class="py-20 px-4">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                 <h2 class="text-4xl md:text-5xl font-bold">What I Do</h2>
+                <p class="text-text-secondary mt-4">Crafting digital experiences through code, creativity, and cutting-edge technology.</p>
+            </div>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+                 <!-- Service Card 1 -->
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="w-12 h-12 bg-cosmic-purple/10 rounded-lg flex items-center justify-center mb-4"><i data-lucide="code-2" class="w-6 h-6 text-cosmic-purple"></i></div>
+                    <h3 class="text-2xl font-semibold mb-2">Full-Stack Development</h3>
+                    <ul class="text-text-secondary space-y-2 list-disc list-inside">
+                        <li>Web & Mobile applications</li>
+                        <li>Responsive user interfaces</li>
+                        <li>API design & integration</li>
+                    </ul>
+                </div>
+                 <!-- Service Card 2 -->
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="w-12 h-12 bg-cosmic-purple/10 rounded-lg flex items-center justify-center mb-4"><i data-lucide="cpu" class="w-6 h-6 text-cosmic-purple"></i></div>
+                    <h3 class="text-2xl font-semibold mb-2">Embedded Systems</h3>
+                    <ul class="text-text-secondary space-y-2 list-disc list-inside">
+                        <li>IoT & connected devices</li>
+                        <li>Firmware development</li>
+                        <li>Sensor integration</li>
+                    </ul>
+                </div>
+                 <!-- Service Card 3 -->
+                 <div class="glass-card rounded-2xl p-8">
+                    <div class="w-12 h-12 bg-cosmic-purple/10 rounded-lg flex items-center justify-center mb-4"><i data-lucide="zap" class="w-6 h-6 text-cosmic-purple"></i></div>
+                    <h3 class="text-2xl font-semibold mb-2">AI/ML Solutions</h3>
+                    <ul class="text-text-secondary space-y-2 list-disc list-inside">
+                        <li>Data analysis & visualization</li>
+                        <li>Predictive modeling</li>
+                        <li>Process automation</li>
+                    </ul>
+                </div>
+                 <!-- Service Card 4 -->
+                 <div class="glass-card rounded-2xl p-8">
+                    <div class="w-12 h-12 bg-cosmic-purple/10 rounded-lg flex items-center justify-center mb-4"><i data-lucide="clapperboard" class="w-6 h-6 text-cosmic-purple"></i></div>
+                    <h3 class="text-2xl font-semibold mb-2">Video Production</h3>
+                    <ul class="text-text-secondary space-y-2 list-disc list-inside">
+                        <li>Motion graphics</li>
+                        <li>Impactful video editing</li>
+                        <li>Visual storytelling</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Testimonials Section =========== -->
+        <section class="py-20 px-4">
+             <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold">Client Testimonials</h2>
+                <p class="text-text-secondary mt-4">What others are saying about working with me.</p>
+            </div>
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass-card rounded-2xl p-8 flex flex-col">
+                    <p class="text-text-secondary mb-6 flex-grow">"Aqib is a dedicated and skilled developer who consistently delivered high-quality work. His problem-solving abilities are top-notch."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-elevated mr-4"></div>
+                        <div>
+                            <p class="font-semibold">Sarah Johnson</p>
+                            <p class="text-sm text-text-tertiary">Project Manager, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="glass-card rounded-2xl p-8 flex flex-col">
+                    <p class="text-text-secondary mb-6 flex-grow">"Working with Aqib was a pleasure. He is an excellent communicator and brought a creative, user-centric approach to our project."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-elevated mr-4"></div>
+                        <div>
+                            <p class="font-semibold">Michael Chen</p>
+                            <p class="text-sm text-text-tertiary">Startup Founder, InnovateX</p>
+                        </div>
+                    </div>
+                 </div>
+                 <!-- Testimonial 3 -->
+                 <div class="glass-card rounded-2xl p-8 flex flex-col">
+                    <p class="text-text-secondary mb-6 flex-grow">"His expertise in AI/ML was invaluable. He not only delivered but also suggested improvements that significantly enhanced the final product."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-elevated mr-4"></div>
+                        <div>
+                            <p class="font-semibold">David Lee</p>
+                            <p class="text-sm text-text-tertiary">Lead Engineer, Data Insights</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== CTA Band Section =========== -->
+        <section class="py-20 px-4">
+            <div class="max-w-5xl mx-auto glass-card rounded-4xl p-8 md:p-16 text-center">
+                 <h2 class="text-4xl md:text-5xl font-bold mb-4">Ready to Build Something Amazing?</h2>
+                 <p class="text-text-secondary mb-8 max-w-2xl mx-auto">Let's discuss how we can bring your cutting-edge ideas to life and create an experience that stands out.</p>
+                 <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <a href="#" class="bg-cosmic-purple text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">Start a Project</a>
+                    <a href="#" class="bg-surface text-text-primary px-6 py-3 rounded-lg font-semibold border border-elevated hover:border-text-secondary transition-colors">Get in Touch</a>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-left">
+                    <div class="border-l-2 border-cosmic-purple pl-4">
+                        <p class="text-4xl font-bold">50+</p>
+                        <p class="text-text-tertiary">Happy Clients</p>
+                    </div>
+                    <div class="border-l-2 border-cosmic-purple pl-4">
+                        <p class="text-4xl font-bold">25+</p>
+                        <p class="text-text-tertiary">Projects Done</p>
+                    </div>
+                    <div class="border-l-2 border-cosmic-purple pl-4">
+                        <p class="text-4xl font-bold">5+</p>
+                        <p class="text-text-tertiary">Years Experience</p>
+                    </div>
+                    <div class="border-l-2 border-cosmic-purple pl-4">
+                        <p class="text-4xl font-bold">24h</p>
+                        <p class="text-text-tertiary">Support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="py-12 px-4 text-center text-text-tertiary">
+        <div class="flex justify-center gap-6 mb-4">
+             <a href="#" class="hover:text-text-primary transition-colors"><i data-lucide="github"></i></a>
+             <a href="#" class="hover:text-text-primary transition-colors"><i data-lucide="linkedin"></i></a>
+             <a href="#" class="hover:text-text-primary transition-colors"><i data-lucide="twitter"></i></a>
+        </div>
+        <p>&copy; 2025 Aqib Rahman. All Rights Reserved.</p>
+    </footer>
+
+    <!-- WebGL Shader Script -->
+    <script id="fragShader" type="x-shader/x-fragment">
+        precision highp float;
+        uniform vec2 iResolution;
+        uniform float iTime;
+        
+        vec3 hash(vec3 p) {
+            p = vec3(dot(p, vec3(127.1, 311.7, 74.7)),
+                     dot(p, vec3(269.5, 183.3, 246.1)),
+                     dot(p, vec3(113.5, 271.9, 124.6)));
+            return -1. + 2. * fract(sin(p) * 43758.5453);
+        }
+        
+        float noise(in vec3 p) {
+            vec3 i = floor(p);
+            vec3 f = fract(p);
+            vec3 u = f * f * (3. - 2. * f);
+            return mix(mix(mix(dot(hash(i + vec3(0, 0, 0)), f - vec3(0, 0, 0)),
+                               dot(hash(i + vec3(1, 0, 0)), f - vec3(1, 0, 0)), u.x),
+                           mix(dot(hash(i + vec3(0, 1, 0)), f - vec3(0, 1, 0)),
+                               dot(hash(i + vec3(1, 1, 0)), f - vec3(1, 1, 0)), u.x), u.y),
+                       mix(mix(dot(hash(i + vec3(0, 0, 1)), f - vec3(0, 0, 1)),
+                               dot(hash(i + vec3(1, 0, 1)), f - vec3(1, 0, 1)), u.x),
+                           mix(dot(hash(i + vec3(0, 1, 1)), f - vec3(0, 1, 1)),
+                               dot(hash(i + vec3(1, 1, 1)), f - vec3(1, 1, 1)), u.x), u.y), u.z);
+        }
+        
+        void main() {
+            vec2 uv = gl_FragCoord.xy / iResolution.xy;
+            vec3 d = normalize(vec3(uv * 2. - 1., 1.));
+            float s = pow(clamp(noise(d * 420.), 0., 1.), 11.) * 200.;
+            s *= mix(0.4, 1.4, noise(d * 100. + vec3(iTime)));
+            gl_FragColor = vec4(vec3(s), 1.);
+        }
+    </script>
+    
+    <!-- GSAP Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+     <!-- NEW: Smooth Scroll Library -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    
+    <!-- NEW: Main Application Script (as a module) -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
